@@ -7,5 +7,6 @@ const SongRouter = Router();
 
 SongRouter.post("/song", validateJWT, upload.single('song'), SongController.uploadSong);
 SongRouter.get("/song/:id", validateJWT, SongController.getSong);
+SongRouter.get("/song", validateJWT, SongController.getAllSongsForUser);
 
 export default SongRouter;

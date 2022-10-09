@@ -17,12 +17,18 @@ const SongController = {
     uploadSong: async (req: Request, res: Response) => {
         const file = req.file;
         const userId = res.locals.id;
- 
+        
+        songService.checkSongFile(file);
         await songService.uploadSong(userId, file);
 
         //await utils.clearUploading(file?.filename);
 
         res.sendStatus(200);
+    },
+    getAllSongsForUser: async (req: Request, res: Response) => {
+        const userId = res.locals.id;
+        const songs = await songService.getAllSongsForUser(userId);
+        res.status(200).send(songs);
     }
 }
 

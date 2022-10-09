@@ -35,7 +35,10 @@ const UserService = {
     
                 const token = jwt.sign(payload, SECRET, { expiresIn: EXPIRES_IN })
     
-                return token;
+                return {
+                        token: token,
+                        name: userExists.name
+                };
             }
             throw { type: "unauthorized", message: "wrong data!" };
         }

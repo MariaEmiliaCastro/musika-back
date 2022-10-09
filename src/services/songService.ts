@@ -17,6 +17,7 @@ const songService = {
     uploadSong: async (userId: number, file: any) => {
         const filePath = file?.path;
         const blobUrl = await azureBlobUtils.uploadToBlob(file);
+
         new jsmediatags.Reader(filePath).read({
             onSuccess: async function(tag) {
                 const picture = tag.tags.picture?.data || " ";
@@ -39,6 +40,21 @@ const songService = {
               console.log(':(', error.type, error.info);
             }
         });
+    },
+    checkSongFile: (file: any) => {
+        console.log("File Mime Type: " + file?.mimetype);
+        if(file.mimetype !== 'audio/mp3' && file.mimetype !== 'audio/mpeg') {
+            throw {type: 'invalid_file', message: 'Invalid file type'};
+        }
+    },
+    getAllSongsForUser: async (userId: number) => {
+        const songs = await songRepository.getAllSongsForUser(userId);
+
+        if(!songs) {
+            throw {type: 'not_found', message: 'Songs not found'};
+        }
+
+        return songs;
     }
 }
 
