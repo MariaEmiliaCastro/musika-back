@@ -1,23 +1,24 @@
 {
-  "name": "projeto19-drivenpass",
+  "name": "musika-back",
   "version": "1.0.0",
   "description": "",
   "main": "server.ts",
   "scripts": {
+    "build" : "tsc",
     "start": "ts-node src/server.ts",
     "dev": "nodemon src/server.ts"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MariaEmiliaCastro/projeto19-drivenpass.git"
+    "url": "git+https://github.com/MariaEmiliaCastro/musika-back.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/MariaEmiliaCastro/projeto19-drivenpass/issues"
+    "url": "https://github.com/MariaEmiliaCastro/musika-back/issues"
   },
-  "homepage": "https://github.com/MariaEmiliaCastro/projeto19-drivenpass#readme",
+  "homepage": "https://github.com/MariaEmiliaCastro/musika-back#readme",
   "dependencies": {
     "@azure/storage-blob": "^12.11.0",
     "@prisma/client": "^4.0.0",
