@@ -4,7 +4,9 @@ import UserService from "../services/userService";
 
 const UserController = {
     createUser: async (req: Request, res: Response) => {
+        console.log(req.body)
         const userData : CreateUser = req.body;
+
         console.log("request to create user: ", userData.email)
         await UserService.createUser(userData);
         console.log("user created: ", userData.email)

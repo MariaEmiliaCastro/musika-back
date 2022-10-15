@@ -2,6 +2,7 @@ import { Router } from "express";
 import UserController from "../controllers/userController";
 import { validateSchemaMiddleware } from '../middlewares/validateSchema';
 import { UserSchema, RegisterSchema } from "../schemas/userSchema";
+import upload from "../middlewares/fileManagementMiddleware";
 
 const UserRoutes = Router();
 

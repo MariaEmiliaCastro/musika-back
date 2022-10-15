@@ -3,6 +3,7 @@ import { CreateUser } from "../types/userTypes";
 import UserRepository from '../repositories/userRepository';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
+import utils from '../Utils/utils';
 
 dotenv.config();
 const bcrypt = require('bcrypt');
