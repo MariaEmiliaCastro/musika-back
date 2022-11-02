@@ -5,10 +5,12 @@ import UserService from "../services/userService";
 const UserController = {
     createUser: async (req: Request, res: Response) => {
         console.log(req.body)
+        const file = req.file;
+        console.log(file);
         const userData : CreateUser = req.body;
 
         console.log("request to create user: ", userData.email)
-        await UserService.createUser(userData);
+        await UserService.createUser(userData, file);
         console.log("user created: ", userData.email)
         res.sendStatus(201);
     },
@@ -18,6 +20,11 @@ const UserController = {
         const data = await UserService.loginUser(userData);
         console.log("user logged in: ", userData.email)
         res.send(data).status(200);
+    },
+    getUser: async (req: Request, res: Response) => {
+        const id = res.locals.id as unknown as number;
+        const userData = await UserService.getUser(id);
+        res.send(userData);
     }
 };
 

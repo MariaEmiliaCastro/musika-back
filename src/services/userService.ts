@@ -9,7 +9,7 @@ dotenv.config();
 const bcrypt = require('bcrypt');
 
 const UserService = {
-    createUser: async (userData: CreateUser) => {
+    createUser: async (userData: CreateUser, file: any) => {
         const userExists = await UserRepository.getUserByEmail(userData.email);
 
         if(userExists){
@@ -17,6 +17,10 @@ const UserService = {
         }
 
         userData.password = bcrypt.hashSync(userData.password, 10);
+
+        if(file){
+            userData.profilePicture = await utils.fileToBase64(file?.filename);
+        }
 
         await UserRepository.createUser(userData);
     },
@@ -45,6 +49,11 @@ const UserService = {
         }
 
         throw { type: "unauthorized", message: "user data not found!" };
+    },
+    getUser: async (id: number) => {
+        const user = await UserRepository.getUser(id);
+        console.log(user);
+        return user;
     }
 };
 

@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/28702ae4-7eca-4401-8b5c-42d48a052c9f/AppServices/subscriptions/28702ae4-7eca-4401-8b5c-42d48a052c9f/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/musika",
+    "appService.deploySubpath": "."
+}
